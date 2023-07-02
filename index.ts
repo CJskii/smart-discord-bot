@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { Client, GatewayIntentBits, Collection } = require(`discord.js`);
-const { LangChainManager } = require(`./modules/langchain/index.js`);
+import LangChainManager from "./modules/langchain/index";
 // ___ Discord Client ___
 
 const client = new Client({
@@ -34,12 +34,12 @@ async function loadConfigAndInitializeBot() {
     }
 
     initializeBot(DISCORD_BOT_TOKEN);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error loading configuration data:", error.message);
   }
 }
 
-async function initializeBot(DISCORD_BOT_TOKEN) {
+async function initializeBot(DISCORD_BOT_TOKEN: string) {
   client.once("ready", async () => {
     console.log(`Logged in as ${client.user.tag}!`);
 
